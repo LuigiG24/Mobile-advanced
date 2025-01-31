@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:todo_app/consts/colors.dart';
+import 'package:todo_app/consts/sizes.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -29,6 +28,7 @@ class _LoginState extends State<Login> {
     });
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -36,33 +36,15 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               image(),
-              SizedBox(height: 50),
+              size50,
               input('Email', Icons.email, emailcontroller, emailFocusNode),
-              SizedBox(height: 10),
+              size10,
               input('Password', Icons.password, passwordcontroller,
                   passwordFocusNode),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Don\'t have an account?',
-                      style: TextStyle(color: Colors.grey, fontSize: 14),
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
-                    Text(
-                      'Sign up',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
+              account(),
+              size50,
+              loginButton(),
+              size10,
             ],
           ),
         ),
@@ -70,29 +52,73 @@ class _LoginState extends State<Login> {
     );
   }
 
+  Padding loginButton() {
+    return Padding(
+              padding:  symmetric15,
+              child: Container(
+                alignment: Alignment.center,
+                width: double.infinity,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: focusedColor,
+                  borderRadius: Radius10,
+                ),
+                child: const Text(
+                  "Login",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            );
+  }
+
+  Padding account() {
+    return  Padding(
+      padding: symmetric15,
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            'Don\'t have an account?',
+            style: TextStyle(color: Colors.grey, fontSize: 14),
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          Text(
+            'Sign up',
+            style: TextStyle(
+                color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+
   Padding input(String typeName, IconData icon,
       TextEditingController controller, FocusNode focusNode) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding:  symmetric15,
       child: Container(
-        decoration: BoxDecoration(color: Colors.white),
+        decoration: const BoxDecoration(color: Colors.white),
         child: TextField(
           controller: controller,
           focusNode: focusNode,
-          style: TextStyle(fontSize: 20, color: Colors.black),
+          style: const TextStyle(fontSize: 20, color: Colors.black),
           decoration: InputDecoration(
             prefixIcon: Icon(
               icon,
               color: focusNode.hasFocus ? focusedColor : borderColor,
             ),
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            contentPadding:symmetircHV,
             hintText: typeName,
             enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: Radius10,
                 borderSide: BorderSide(color: borderColor, width: 2.0)),
             focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: Radius10,
                 borderSide: BorderSide(color: focusedColor, width: 2.0)),
           ),
         ),
@@ -102,11 +128,11 @@ class _LoginState extends State<Login> {
 
   Padding image() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding:  symmetric15,
       child: Container(
         height: 300,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/login_header.png'),
           ),
