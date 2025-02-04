@@ -4,7 +4,8 @@ import 'package:todo_app/consts/sizes.dart';
 import 'package:todo_app/widgets/images.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
+  final VoidCallback show;
+  const Login(this.show, {super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -42,7 +43,7 @@ class _LoginState extends State<Login> {
               size10,
               input('Password', Icons.password, passwordcontroller,
                   passwordFocusNode),
-              account(),
+              account("Don't you have an account?", "Sign Up", widget.show),
               size50,
               loginButton(),
               size10,

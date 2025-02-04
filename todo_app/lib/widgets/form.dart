@@ -25,29 +25,34 @@ import 'package:todo_app/consts/sizes.dart';
             );
   }
 
-  Padding account() {
+  Padding account(message, buttonName, show) {
     return  Padding(
       padding: symmetric15,
-      child: const Row(
+      child:  Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Text(
-            'Don\'t have an account?',
+            message,
             style: TextStyle(color: Colors.grey, fontSize: 14),
           ),
           SizedBox(
             width: 5,
           ),
-          Text(
-            'Sign up',
-            style: TextStyle(
-                color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
+          GestureDetector(
+            onTap: show,
+            child: Text(
+              buttonName,
+              style: TextStyle(
+                  color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
     );
   }
 
+  
+ 
   Padding input(String typeName, IconData icon,
       TextEditingController controller, FocusNode focusNode) {
     return Padding(

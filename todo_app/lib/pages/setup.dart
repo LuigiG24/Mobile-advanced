@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/widgets/form.dart ';
+import 'package:todo_app/widgets/form.dart';
 import 'package:todo_app/consts/sizes.dart';
 import 'package:todo_app/widgets/images.dart';
 
 
 class Setup extends StatefulWidget {
-  const Setup({super.key});
+  final VoidCallback show;
+  const Setup(this.show, {super.key});
 
   @override
   State<Setup> createState() => _SetupState();
@@ -53,7 +54,7 @@ class _SetupState extends State<Setup> {
               size10,
               input('Confirm Password', Icons.password, passwordConfirmController,
                   passwordConfirmFocusNode),
-              account(),
+              account("Have you an account?", "Login", widget.show),
               size50,
               loginButton(),
               size10,
