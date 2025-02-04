@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/data/auth_data.dart';
 import 'package:todo_app/widgets/form.dart';
 import 'package:todo_app/consts/sizes.dart';
 import 'package:todo_app/widgets/images.dart';
@@ -45,7 +46,7 @@ class _LoginState extends State<Login> {
                   passwordFocusNode),
               account("Don't you have an account?", "Sign Up", widget.show),
               size50,
-              loginButton("Login"),
+              loginButton("Login", (){AuthenticationRemote().login(emailcontroller.text, passwordcontroller.text);}),
               size10,
             ],
           ),

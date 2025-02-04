@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/data/auth_data.dart';
 import 'package:todo_app/widgets/form.dart';
 import 'package:todo_app/consts/sizes.dart';
 import 'package:todo_app/widgets/images.dart';
@@ -56,7 +57,7 @@ class _SetupState extends State<Setup> {
                   passwordConfirmFocusNode),
               account("Have you an account?", "Login", widget.show),
               size50,
-              loginButton("Sign Up"),
+              loginButton("Sign Up",(){AuthenticationRemote().register(emailcontroller.text, passwordcontroller.text, passwordConfirmController.text);}),
               size10,
             ],
           ),

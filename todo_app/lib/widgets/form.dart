@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/consts/colors.dart';
 import 'package:todo_app/consts/sizes.dart';
+import 'package:todo_app/data/auth_data.dart';
 
 
-  Padding loginButton(text) {
+  Padding loginButton(text, VoidCallback onPressed) {
     return Padding(
               padding:  symmetric15,
               child: Container(
@@ -14,12 +15,15 @@ import 'package:todo_app/consts/sizes.dart';
                   color: focusedColor,
                   borderRadius: Radius10,
                 ),
-                child:  Text(
-                  text,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),
+                child:  GestureDetector(
+                  onTap: onPressed,
+                  child: Text(
+                    text,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             );
