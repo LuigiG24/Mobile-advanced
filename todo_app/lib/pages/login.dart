@@ -45,7 +45,7 @@ class _LoginState extends State<Login> {
                   passwordFocusNode),
               account("Don't you have an account?", "Sign Up", widget.show),
               size50,
-              loginButton(),
+              loginButton("Login"),
               size10,
             ],
           ),

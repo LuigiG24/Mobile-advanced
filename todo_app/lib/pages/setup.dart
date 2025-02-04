@@ -56,7 +56,7 @@ class _SetupState extends State<Setup> {
                   passwordConfirmFocusNode),
               account("Have you an account?", "Login", widget.show),
               size50,
-              loginButton(),
+              loginButton("Sign Up"),
               size10,
             ],
           ),

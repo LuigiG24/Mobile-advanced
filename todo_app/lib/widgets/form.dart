@@ -3,7 +3,7 @@ import 'package:todo_app/consts/colors.dart';
 import 'package:todo_app/consts/sizes.dart';
 
 
-  Padding loginButton() {
+  Padding loginButton(text) {
     return Padding(
               padding:  symmetric15,
               child: Container(
@@ -14,8 +14,8 @@ import 'package:todo_app/consts/sizes.dart';
                   color: focusedColor,
                   borderRadius: Radius10,
                 ),
-                child: const Text(
-                  "Login",
+                child:  Text(
+                  text,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
