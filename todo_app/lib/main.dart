@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/auth/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp();
+  await Firebase.initializeApp();
   runApp(const ToDoApp());
 }
 
