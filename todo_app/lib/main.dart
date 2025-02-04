@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/pages/login.dart';
+import 'package:todo_app/pages/setup.dart';
 
 void main() {
   runApp(const ToDoApp());
@@ -17,7 +18,7 @@ class ToDoApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Login(),
+      home: const Setup(),
     );
   }
 }
