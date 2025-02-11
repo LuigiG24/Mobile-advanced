@@ -21,7 +21,7 @@ class ToDoApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AddItemPage(),
+      home: const Home(),
     );
   }
 }
