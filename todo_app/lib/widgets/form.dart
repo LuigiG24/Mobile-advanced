@@ -84,3 +84,55 @@ import 'package:todo_app/consts/sizes.dart';
       ),
     );
   }
+
+  
+Padding titleWidget(
+    String typeName, TextEditingController controller, FocusNode focusNode) {
+  return Padding(
+    padding: symmetric15,
+    child: Container(
+      decoration: const BoxDecoration(color: Colors.white),
+      child: TextField(
+        controller: controller,
+        focusNode: focusNode,
+        style: const TextStyle(fontSize: 20, color: Colors.black),
+        decoration: InputDecoration(
+          contentPadding: symmetricHV,
+          hintText: typeName,
+          enabledBorder: OutlineInputBorder(
+              borderRadius: Radius10,
+              borderSide: BorderSide(color: borderColor, width: 2.0)),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: Radius10,
+              borderSide: BorderSide(color: focusedColor, width: 2.0)),
+        ),
+      ),
+    ),
+  );
+}
+
+Padding subtitleWidget(
+    String typeName, TextEditingController controller, FocusNode focusNode) {
+  return Padding(
+    padding: symmetric15,
+    child: Container(
+      decoration: const BoxDecoration(color: Colors.white),
+      child: TextField(
+        maxLines: 4,
+        controller: controller,
+        focusNode: focusNode,
+        style: const TextStyle(fontSize: 20, color: Colors.black),
+        decoration: InputDecoration(
+          contentPadding: symmetricHV,
+          hintText: typeName,
+          enabledBorder: OutlineInputBorder(
+              borderRadius: Radius10,
+              borderSide: BorderSide(color: borderColor, width: 2.0)),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: Radius10,
+              borderSide: BorderSide(color: focusedColor, width: 2.0)),
+        ),
+      ),
+    ),
+  );
+}

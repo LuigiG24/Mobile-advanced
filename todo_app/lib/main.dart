@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todo_app/pages/add_item_page.dart';
 import 'package:todo_app/pages/home.dart';
 
 void main() async {
@@ -20,7 +21,7 @@ class ToDoApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const AddItemPage(),
     );
   }
 }
