@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/consts/colors.dart';
 import 'package:todo_app/consts/sizes.dart';
-import 'package:todo_app/data/auth_data.dart';
 
 
   Padding loginButton(text, VoidCallback onPressed) {
@@ -72,7 +71,7 @@ import 'package:todo_app/data/auth_data.dart';
               icon,
               color: focusNode.hasFocus ? focusedColor : borderColor,
             ),
-            contentPadding:symmetircHV,
+            contentPadding: symmetricHV,
             hintText: typeName,
             enabledBorder: OutlineInputBorder(
                 borderRadius: Radius10,
