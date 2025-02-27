@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/consts/colors.dart';
+import 'package:todo_app/data/firestore_data.dart';
 import 'package:todo_app/pages/add_item_page.dart';
 import 'package:todo_app/widgets/task_widget.dart';
 
@@ -15,19 +17,37 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const AddItemPage()));
+        onPressed: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const AddItemPage()));
         },
         child: Icon(Icons.add),
         backgroundColor: focusedColor,
       ),
       body: SafeArea(
-        child: ListView.builder(
-          itemBuilder: (context, index) {
-            return TaskWidget();
-          },
-          itemCount: 10,
-        ),
+        child: StreamBuilder<QuerySnapshot>(
+            stream: FirestoreDataSource().stream(),
+            builder: (context, snapshot) {
+              final tasklist = FirestoreDataSource().getTask(snapshot);
+              print(tasklist.toString());
+              return ListView.builder(
+                itemBuilder: (context, index) {
+                  if (snapshot.hasData) {
+                    return CircularProgressIndicator();
+                  }
+
+                  final task = tasklist[index];
+                  return Dismissible(
+                      key: UniqueKey(),
+                      onDismissed: (direction) {
+                        FirestoreDataSource().deleteTask(task.id);
+                      },
+                      child: TaskWidget(task));
+                },
+                
+                itemCount: tasklist.length,
+              );
+            }),
       ),
     );
   }

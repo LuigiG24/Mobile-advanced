@@ -17,7 +17,7 @@ class _SetupState extends State<Setup> {
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final passwordConfirmController = TextEditingController();
-  
+
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
   final FocusNode passwordConfirmFocusNode = FocusNode();
@@ -37,6 +37,18 @@ class _SetupState extends State<Setup> {
       setState(() {});
     });
   }
+
+   // Email validation function
+  bool isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
+  }
+
+  // Password validation function
+  bool isValidPassword(String password) {
+    final passwordRegex = RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$');
+    return passwordRegex.hasMatch(password);
+  }  
   
 
   @override
@@ -51,14 +63,15 @@ class _SetupState extends State<Setup> {
               size50,
               input('Email', Icons.email, emailcontroller, emailFocusNode),
               size10,
-              input('Password', Icons.password, passwordcontroller,
-                  passwordFocusNode),
+              input('Password', Icons.password, passwordcontroller,passwordFocusNode ),
               size10,
               input('Confirm Password', Icons.password, passwordConfirmController,
                   passwordConfirmFocusNode),
               account("Have you an account?", "Login", widget.show),
               size50,
-              loginButton("Sign Up",(){AuthenticationRemote().register(emailcontroller.text, passwordcontroller.text, passwordConfirmController.text);}),
+              loginButton("Sign Up",(){
+                AuthenticationRemote().register(emailcontroller.text, passwordcontroller.text, passwordConfirmController.text);
+                }),
               size10,
             ],
           ),

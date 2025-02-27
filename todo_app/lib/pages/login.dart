@@ -19,6 +19,7 @@ class _LoginState extends State<Login> {
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
 
+
   @override
   void initState() {
     super.initState();
@@ -30,6 +31,7 @@ class _LoginState extends State<Login> {
       setState(() {});
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +45,7 @@ class _LoginState extends State<Login> {
               size50,
               input('Email', Icons.email, emailcontroller, emailFocusNode),
               size10,
-              input('Password', Icons.password, passwordcontroller,
-                  passwordFocusNode),
+              input('Password', Icons.password, passwordcontroller, passwordFocusNode),
               account("Don't you have an account?", "Sign Up", widget.show),
               size50,
               loginButton("Login", (){AuthenticationRemote().login(emailcontroller.text, passwordcontroller.text);}),

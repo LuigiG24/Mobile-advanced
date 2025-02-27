@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/consts/colors.dart';
+import 'package:todo_app/data/firestore_data.dart';
+import 'package:todo_app/data/task_model.dart';
+import 'package:todo_app/pages/edit_item_page.dart';
 
 class TaskWidget extends StatefulWidget {
-  const TaskWidget({super.key});
+  Task _task;
+  TaskWidget(this._task, {super.key});
 
   @override
   State<TaskWidget> createState() => _TaskWidgetState();
@@ -44,38 +48,48 @@ class _TaskWidgetState extends State<TaskWidget> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("title ",
+                        Text(widget._task.title,
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)),
-                        Checkbox(value: isDone, onChanged: null),
+                        Checkbox(value: widget._task.isDone, onChanged: (value){
+                          setState(() {
+                            widget._task.isDone = !widget._task.isDone;
+                          });
+                          FirestoreDataSource().isDone(widget._task.id, widget._task.isDone);
+                        }),
                       ],
                     ),
                     Text(
-                      "subtitle",
+                      widget._task.subtitle,
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Container(
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: focusedColor,
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-                        child: Text(
-                          "Edit",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> EditItemPage(widget._task)));
+                      },
+                      child: Container(
+                        width: 90,
+                        decoration: BoxDecoration(
+                          color: focusedColor,
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        child: Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                          child: Text(
+                            "Edit",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),

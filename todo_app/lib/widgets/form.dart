@@ -57,7 +57,7 @@ import 'package:todo_app/consts/sizes.dart';
   
  
   Padding input(String typeName, IconData icon,
-      TextEditingController controller, FocusNode focusNode) {
+      TextEditingController controller, FocusNode focusNode,) {
     return Padding(
       padding:  symmetric15,
       child: Container(
@@ -81,6 +81,7 @@ import 'package:todo_app/consts/sizes.dart';
                 borderSide: BorderSide(color: focusedColor, width: 2.0)),
           ),
         ),
+        
       ),
     );
   }
