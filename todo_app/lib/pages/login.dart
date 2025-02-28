@@ -43,9 +43,9 @@ class _LoginState extends State<Login> {
             children: [
               image(),
               size50,
-              input('Email', Icons.email, emailcontroller, emailFocusNode),
+              input('Email', Icons.email, emailcontroller, emailFocusNode, null, null),
               size10,
-              input('Password', Icons.password, passwordcontroller, passwordFocusNode),
+              input('Password', Icons.password, passwordcontroller, passwordFocusNode, null, null),
               account("Don't you have an account?", "Sign Up", widget.show),
               size50,
               loginButton("Login", (){AuthenticationRemote().login(emailcontroller.text, passwordcontroller.text);}),

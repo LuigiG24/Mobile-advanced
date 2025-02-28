@@ -16,14 +16,13 @@ class FirestoreDataSource {
       });
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }
 
   Future<bool> addTask(String title, String subtitle) async {
     try {
-      var uuid = Uuid().v4();
+      var uuid = const Uuid().v4();
       DateTime date = DateTime.now();
       await _firestore
           .collection('users')
@@ -39,7 +38,6 @@ class FirestoreDataSource {
       });
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }
@@ -54,20 +52,22 @@ class FirestoreDataSource {
 
   List getTask(AsyncSnapshot snapshot)  {
     try { 
-      final tasklist = snapshot.data!.docs.map((doc) {
+      final taskList = snapshot.data!.docs.map((doc) {
         final data = doc.data() as Map<String, dynamic>; 
         return Task(
-          data['id'],
-          data['time'],
-          data['title'],
-          data['subtitle'],
-          data['isDone']);
+          data['id'] ??'',
+          data['time'] ??'',
+          data['title'] ?? '',
+          data['subtitle'] ??'',
+          data['isDone'] ?? false);
       }).toList();
-      return tasklist;
-    }  catch (e) { 
+      return taskList;
+    }  catch (e) {
+      print('error'+e.toString());
         return [];
     }
   }
+
 
   Future<bool> isDone(String uuid, bool isDone) async {
     try {
@@ -93,7 +93,6 @@ class FirestoreDataSource {
           .delete();
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }
@@ -113,7 +112,6 @@ class FirestoreDataSource {
       });
       return true;
     } catch (e) {
-      print(e);
       return false;
     }
   }

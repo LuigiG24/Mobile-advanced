@@ -21,7 +21,7 @@ class _MainPageState extends State<MainPage> {
             if (snapshot.hasData) {
               return const Home();
             } else {
-              return  AuthPage();
+              return  const AuthPage();
             }
           }),
     );

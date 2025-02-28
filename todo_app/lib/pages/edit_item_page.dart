@@ -47,27 +47,27 @@ class _EditItemPageState extends State<EditItemPage> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Edit task",
+                    child: const Text("Edit task",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                         )),
                     style: ElevatedButton.styleFrom(
                         backgroundColor: focusedColor,
-                        minimumSize: Size(100, 50)),
+                        minimumSize: const Size(100, 50)),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       FirestoreDataSource().updateTask(widget._task.id, widget._task.title, widget._task.subtitle);
                     },
-                    child: Text("Cancel",
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: focusedColor,
+                        minimumSize: const Size(100, 50)),
+                    child: const Text("Cancel",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                         )),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: focusedColor,
-                        minimumSize: Size(100, 50)),
                   ),
                 ],
               ),

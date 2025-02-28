@@ -39,27 +39,27 @@ class _AddItemPageState extends State<AddItemPage> {
                       FirestoreDataSource().addTask(title.text, subtitle.text);
                       Navigator.of(context).pop();
                     },
-                    child: Text("Add task",
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: focusedColor,
+                        minimumSize: const Size(100, 50)),
+                    child: const Text("Add task",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                         )),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: focusedColor,
-                        minimumSize: Size(100, 50)),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text("Cancel",
-                        style: TextStyle(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: focusedColor,
+                        minimumSize: const Size(100, 50)),
+                    child: const Text("Cancel",
+                        style:  TextStyle(
                           color: Colors.white,
                           fontSize: 16,
                         )),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: focusedColor,
-                        minimumSize: Size(100, 50)),
                   ),
                 ],
               ),

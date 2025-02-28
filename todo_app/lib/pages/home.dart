@@ -21,19 +21,18 @@ class _HomeState extends State<Home> {
           Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const AddItemPage()));
         },
-        child: Icon(Icons.add),
         backgroundColor: focusedColor,
+        child: const  Icon(Icons.add),
       ),
       body: SafeArea(
         child: StreamBuilder<QuerySnapshot>(
             stream: FirestoreDataSource().stream(),
             builder: (context, snapshot) {
               final tasklist = FirestoreDataSource().getTask(snapshot);
-              print(tasklist.toString());
               return ListView.builder(
                 itemBuilder: (context, index) {
-                  if (snapshot.hasData) {
-                    return CircularProgressIndicator();
+                  if (!snapshot.hasData) {
+                    return const CircularProgressIndicator();
                   }
 
                   final task = tasklist[index];

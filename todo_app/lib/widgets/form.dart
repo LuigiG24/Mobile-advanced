@@ -18,7 +18,7 @@ import 'package:todo_app/consts/sizes.dart';
                   onTap: onPressed,
                   child: Text(
                     text,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
@@ -36,16 +36,16 @@ import 'package:todo_app/consts/sizes.dart';
         children: [
           Text(
             message,
-            style: TextStyle(color: Colors.grey, fontSize: 14),
+            style: const TextStyle(color: Colors.grey, fontSize: 14),
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           GestureDetector(
             onTap: show,
             child: Text(
               buttonName,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.blue, fontSize: 14, fontWeight: FontWeight.bold),
             ),
           ),
@@ -57,7 +57,7 @@ import 'package:todo_app/consts/sizes.dart';
   
  
   Padding input(String typeName, IconData icon,
-      TextEditingController controller, FocusNode focusNode,) {
+      TextEditingController controller, FocusNode focusNode,Function(String)? onChanged, String? errorText,) {
     return Padding(
       padding:  symmetric15,
       child: Container(
@@ -65,6 +65,7 @@ import 'package:todo_app/consts/sizes.dart';
         child: TextField(
           controller: controller,
           focusNode: focusNode,
+          onChanged:  onChanged,
           style: const TextStyle(fontSize: 20, color: Colors.black),
           decoration: InputDecoration(
             prefixIcon: Icon(
@@ -73,6 +74,7 @@ import 'package:todo_app/consts/sizes.dart';
             ),
             contentPadding: symmetricHV,
             hintText: typeName,
+            errorText: errorText,
             enabledBorder: OutlineInputBorder(
                 borderRadius: Radius10,
                 borderSide: BorderSide(color: borderColor, width: 2.0)),

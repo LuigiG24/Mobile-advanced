@@ -18,7 +18,7 @@ class _TaskWidgetState extends State<TaskWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       child: SafeArea(
         child: Container(
           width: double.infinity,
@@ -31,13 +31,13 @@ class _TaskWidgetState extends State<TaskWidget> {
                   color: Colors.grey.withValues(alpha: 0.2),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 2)),
+                  offset: const Offset(0, 2)),
             ],
           ),
           alignment: Alignment.center,
           child: Row(
             children: [
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Expanded(
@@ -49,7 +49,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(widget._task.title,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)),
@@ -63,7 +63,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                     ),
                     Text(
                       widget._task.subtitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
                         fontWeight: FontWeight.w400,
@@ -79,7 +79,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                           color: focusedColor,
                           borderRadius: BorderRadius.circular(18),
                         ),
-                        child: Padding(
+                        child: const Padding(
                           padding:
                               EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                           child: Text(
@@ -93,7 +93,7 @@ class _TaskWidgetState extends State<TaskWidget> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                   ],
                 ),
               )
