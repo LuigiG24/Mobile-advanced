@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
             children: [
               image(),
               size50,
-              input('Email', Icons.email, emailcontroller, emailFocusNode, null, null, _isPasswordVisible),
+              input('Email', Icons.email, emailcontroller, emailFocusNode, null, null, false),
               size10,
               input('Password', Icons.password, passwordcontroller, passwordFocusNode, null, null, _isPasswordVisible),
               account("Don't you have an account?", "Sign Up", widget.show),
