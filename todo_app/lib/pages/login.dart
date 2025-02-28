@@ -15,6 +15,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
+  bool _isPasswordVisible = true;
 
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
@@ -32,6 +33,12 @@ class _LoginState extends State<Login> {
     });
   }
 
+  void isPasswordVisible() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +50,9 @@ class _LoginState extends State<Login> {
             children: [
               image(),
               size50,
-              input('Email', Icons.email, emailcontroller, emailFocusNode, null, null),
+              input('Email', Icons.email, emailcontroller, emailFocusNode, null, null, _isPasswordVisible),
               size10,
-              input('Password', Icons.password, passwordcontroller, passwordFocusNode, null, null),
+              input('Password', Icons.password, passwordcontroller, passwordFocusNode, null, null, _isPasswordVisible),
               account("Don't you have an account?", "Sign Up", widget.show),
               size50,
               loginButton("Login", (){AuthenticationRemote().login(emailcontroller.text, passwordcontroller.text);}),

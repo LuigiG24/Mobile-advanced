@@ -57,7 +57,7 @@ import 'package:todo_app/consts/sizes.dart';
   
  
   Padding input(String typeName, IconData icon,
-      TextEditingController controller, FocusNode focusNode,Function(String)? onChanged, String? errorText,) {
+      TextEditingController controller, FocusNode focusNode,Function(String)? onChanged, String? errorText,bool isPassword) {
     return Padding(
       padding:  symmetric15,
       child: Container(
@@ -66,6 +66,7 @@ import 'package:todo_app/consts/sizes.dart';
           controller: controller,
           focusNode: focusNode,
           onChanged:  onChanged,
+          obscureText: isPassword,
           style: const TextStyle(fontSize: 20, color: Colors.black),
           decoration: InputDecoration(
             prefixIcon: Icon(

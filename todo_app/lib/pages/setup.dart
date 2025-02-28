@@ -16,6 +16,7 @@ class _SetupState extends State<Setup> {
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   final passwordConfirmController = TextEditingController();
+  bool _isPasswordVisible = true;
 
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
@@ -73,6 +74,13 @@ class _SetupState extends State<Setup> {
     });
   }
 
+   void isPasswordVisible() {
+    setState(() {
+      _isPasswordVisible = !_isPasswordVisible;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,13 +91,13 @@ class _SetupState extends State<Setup> {
             children: [
               image(),
               size50,
-              input('Email', Icons.email, emailcontroller, emailFocusNode, (value) => validateInputs(), emailError),
+              input('Email', Icons.email, emailcontroller, emailFocusNode, (value) => validateInputs(), emailError, false),
               size10,
               input('Password', Icons.password, passwordcontroller,
-                  passwordFocusNode, (value) => validateInputs(), passwordError),
+                  passwordFocusNode, (value) => validateInputs(), passwordError, _isPasswordVisible),
               size10,
               input('Confirm Password', Icons.password,
-                  passwordConfirmController, passwordConfirmFocusNode,(value) => validateInputs(), passwordMatchError),
+                  passwordConfirmController, passwordConfirmFocusNode,(value) => validateInputs(), passwordMatchError, _isPasswordVisible),
               account("Have you an account?", "Login", widget.show),
               size50,
               loginButton("Sign Up", () {
